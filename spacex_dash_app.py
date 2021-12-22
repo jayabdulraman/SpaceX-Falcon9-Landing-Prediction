@@ -75,7 +75,9 @@ def get_pie_chart(entered_site):
 @app.callback(Output(component_id='success-payload-scatter-chart', component_property='figure'),
              [Input(component_id='site-dropdown', component_property='value'), Input(component_id="payload-slider", component_property="value")])
 def get_scatter_plot(entered_site, payload):
-    filtered_data = spacex_df
+    filtered_data = spacex_df[spacex_df['Payload Mass (kg)'].between(payload[0], payload[1])]
+    print("check:", payload)
+    print("site:", entered_site)
     if entered_site == 'ALL' or entered_site == 'All Sites':
         fig = px.scatter(data_frame=filtered_data,
                         x='Payload Mass (kg)', 
@@ -86,7 +88,7 @@ def get_scatter_plot(entered_site, payload):
         return fig
 
     else:
-        filtered_data = spacex_df[(spacex_df['Launch Site'] == entered_site) | (spacex_df['Payload Mass (kg)'].between(0, payload[0]))]
+        filtered_data = spacex_df[(spacex_df['Launch Site'] == entered_site) & (spacex_df['Payload Mass (kg)'].between(payload[0], payload[1]))]
         fig = px.scatter(data_frame=filtered_data,
                         x='Payload Mass (kg)', 
                         y='class', 
