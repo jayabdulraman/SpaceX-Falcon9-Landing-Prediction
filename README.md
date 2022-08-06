@@ -3,5 +3,5 @@ In this capstone, we will **predict** if the **Falcon 9 first stage will land su
 
 # Dynamic Web App
 I also developed a dynamic web app with django, react, and carbon design system that would help you explore the machine learning model, input different values to variables and predict whether SpaceX Falcon9 first stage will land or not. 
-#### Click (here)[http://ajmlapps.herokuapp.com/] to explore app.
+#### Click [here](http://ajmlapps.herokuapp.com/) to explore app.
 
